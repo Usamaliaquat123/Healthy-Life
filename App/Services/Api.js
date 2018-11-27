@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://www.healthylife.pk/wp-json') => {
   // ------
   // STEP 1
   // ------
@@ -37,6 +37,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
+  const getProducts = (consumerKey,consumerSecret) => api.get('/wc/v2/products',consumerKey,consumerSecret)
 
   // ------
   // STEP 3
@@ -54,7 +55,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
+    getUser,
+    getProducts
   }
 }
 

@@ -27,7 +27,7 @@ export const GithubSelectors = {
   selectAvatar: state => state.github.avatar
 }
 
-/* ------------- Reducers ------------- */
+/* ------------- github reducers ------------- */
 
 // request the avatar for a user
 export const request = (state, { username }) =>
