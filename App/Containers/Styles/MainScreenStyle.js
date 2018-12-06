@@ -4,7 +4,26 @@ import { ApplicationStyles } from '../../Themes/'
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   drawerStyleCustom : {
-    backgroundColor : '#134167',
-    height : 50
+    backgroundColor : '#FFFFFF',
+   
+  },
+  contentContainer :{
+    backgroundColor : 'white',
+
+  },
+  cardImage : {
+    height : 100,
+    width : 100
+  },
+  mainCard : {
+
+  },
+  desc : {
+    fontSize : 10
+  },
+  price : {
+    color : '#547B93',
+    fontSize: 9
   }
+  
 })

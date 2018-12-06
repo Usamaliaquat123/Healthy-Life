@@ -2,15 +2,40 @@ import React, { Component } from 'react'
 import { View, Image, ScrollView } from 'react-native'
 import { SearchBar } from 'react-native-elements'
 import styles from './SearchBar.styles'
-
+import { PropTypes } from "prop-types";
+import SearchBarStyles from './SearchBar.styles';
 /*
  * Default : Props
  */
 
+// SearchBarHealthy.propTypes = {
+//     /*
+//      *@Params : SearchOnClear its just a function
+//      */
+//     SearchOnClear: PropsTypes.func.isRequired,
+//      /*
+//      *@Params : searchOnTextChange its just a function
+//      */
+//     searchOnTextChange :  PropsTypes.func.isRequired
+    
+// }
+// SearchBarStyles.defaultProps  = {
+//     searchOnClear : this.searchOnClear,
+//     searchOnTextChange : this.searchOnTextChange
+// }
 
+
+// searchOnTextChange = () => {
+//     // Tada: Search on clear trigger
+// }
+// searchOnClear = () => {
+//     // tata : Cleared Text
+// }
 
 export default class SearchBarHealthy extends Component {
     render() {
+        
+        // const { searchOnTextChange, searchOnClear } = this.props
         return (
             <SearchBar
             containerStyle={styles.searchcontainer}
@@ -21,8 +46,8 @@ export default class SearchBarHealthy extends Component {
             round
             cancelIcon={false}
             searchIcon={null}
-            // onChangeText={this.searchOnTextChange}
-            // onClear={this.searchOnClear}
+            // onChangeText={searchOnTextChange}
+            // onClear={searchOnClear}
             placeholder='Search...' />
         )
     }
