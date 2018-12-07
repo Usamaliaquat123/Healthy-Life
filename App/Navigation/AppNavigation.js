@@ -108,7 +108,7 @@ export const PrimaryNav = StackNavigator({
     initialRouteName: 'HomeScreen',
     navigationOptions: {
       headerStyle: styles.header
-    }
+    },
   })
 
 class MyHomeScreen extends Component {
@@ -174,7 +174,7 @@ export default Drawer = DrawerNavigator(
   {
     drawerPosition: 'left',
     initialRouteName: 'Stack',
-    drawerBackgroundColor: '#134167',
+    drawerBackgroundColor: 'white',
     drawerWidth: 200,
   },
 )
