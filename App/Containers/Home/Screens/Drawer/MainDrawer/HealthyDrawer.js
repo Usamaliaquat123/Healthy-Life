@@ -6,7 +6,9 @@ import { DrawerNavigator } from "react-navigation";
 
 // Styles
 import styles from './HealthyDrawerStyle'
-
+// //////////////////////////////////////////////////////
+////////////////////////HOME SCREEN/////////////////////
+////////////////////////////////////////////////////////
 class MyHomeScreen extends Component {
     static navigationOptions = {
         drawerLabel: 'Home',
@@ -31,6 +33,9 @@ class MyHomeScreen extends Component {
         )
     }
 }
+// //////////////////////////////////////////////////////
+////////////NOTIFICATION SCREEN ////////////////////////
+////////////////////////////////////////////////////////
 class MyNotificationsScreen extends Component {
     static navigationOptions = {
         drawerLabel: 'Notifications',

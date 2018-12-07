@@ -61,7 +61,8 @@
     "react-test-renderer": "16.3.1",
     "reactotron-react-native": "^2.0.0-alpha.3",
     "reactotron-redux": "^2.0.0-alpha.3",
-    "reactotron-redux-saga": "^2.0.0-alpha.3"
+    "reactotron-redux-saga": "^2.0.0-alpha.3",
+    "remote-redux-devtools": "^0.5.13"
   },
   "jest": {
     "testMatch": [
