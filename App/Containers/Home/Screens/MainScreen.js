@@ -9,7 +9,7 @@ import { authWP } from "../../keys";
 // Styles
 import styles from '../../Styles/MainScreenStyle'
 import Carousel from 'react-native-snap-carousel';
-// import HealthyCard from '../../../Components/HealthyCard/HealthyCard';
+import HealthyCard from '../../../Components/HealthyCard/HealthyCard';
 import {brands}  from "./Brands";
 
 export default class MainScreen extends Component {
@@ -103,130 +103,46 @@ export default class MainScreen extends Component {
     return (
 
       <View style={styles.contentContainer}>
-
         <ScrollView showsVerticalScrollIndicator={false}>
-
-          {/* Horizontal Slider */}
-          <Text style={{ fontSize: 13, paddingTop: 15, paddingLeft: 20, fontWeight: 'bold', color: '#1F5273' }}>FEATURED</Text>
+          {/* Featured Products */}
+          <Text style={styles.subHeading}>FEATURED</Text>
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
             {
-              this.state.featuredProducts.map((products) => {
+              this.state.featuredProducts.map(featuredProducts => {
                 return (
-                  <Card containerStyle={{ marginRight: -5, padding: 0, width: 115, borderRadius: 10, elevation: 6, marginBottom: 10 }}>
-                    <View style={styles.user}>
-                      <View style={{ padding: 5, flexDirection: 'row' }} >
-                        <Image
-                          style={styles.cardImage}
-                          resizeMode="contain"
-                          source={{ uri: products.images[0].src }}
-                        />
-                        <Icon
-                          type='font-awesome'
-                          name='heart'
-                          size={15}
-                          color='#E6E6E6'
-                          //  onPress={  }
-                          containerStyle={{ marginLeft: -15, paddingTop: 2 }} />
-                        <Icon
-                          type='ionicon'
-                          name='ios-add-circle'
-                          size={25}
-                          color='#87B6D4'
-                          containerStyle={{ marginLeft: -100 }}
-                        />
-                      </View>
-                      <View style={{ padding: 2 }}>
-                        <Text style={styles.desc}>{products.name}</Text>
-                        <Text style={styles.price}>Rs: {products.price}</Text>
-                      </View>
-                    </View>
-                  </Card>
+                  <HealthyCard ProductsName={featuredProducts.name} ProductsPrice={featuredProducts.price} ProductsImage={featuredProducts.images[0].src}></HealthyCard>
                 );
               })
             }
           </ScrollView>
-          <Text style={{ marginRight: -5, fontSize: 13, paddingTop: 10, paddingLeft: 20, fontWeight: 'bold', color: '#1F5273' }}>SALES</Text>
+          {/* Sales Products */}
+          <Text style={ styles.subHeading }>SALES</Text>
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
             {
-              this.state.salesProducts.map((products) => {
+              this.state.salesProducts.map(salesProducts => {
                 return (
-                  <Card containerStyle={{ marginRight: -5, padding: 0, width: 115, borderRadius: 10, elevation: 6, marginBottom: 10 }}>
-                    <View style={styles.user}>
-                      <View style={{ padding: 5, flexDirection: 'row' }} >
-                        <Image
-                          style={styles.cardImage}
-                          resizeMode="contain"
-                          source={{ uri: products.images[0].src }}
-                        />
-                        <Icon
-                          type='font-awesome'
-                          name='heart'
-                          size={15}
-                          color='#E6E6E6'
-                          //  onPress={  }
-                          containerStyle={{ marginLeft: -15, paddingTop: 2 }} />
-                        <Icon
-                          type='ionicon'
-                          name='ios-add-circle'
-                          size={25}
-                          color='#87B6D4'
-                          containerStyle={{ marginLeft: -100 }}
-                        />
-                      </View>
-                      <View style={{ padding: 2 }}>
-                        <Text style={styles.desc}>{products.name}</Text>
-                        <Text style={styles.price}>Rs: {products.price}</Text>
-                      </View>
-                    </View>
-                  </Card>
-                  // <HealthyCard ProductsName={products.name} ProductsPrice={products.price} ProductsImage={products.images[0].src}></HealthyCard>
+                  <View>
+                    <HealthyCard ProductsName={salesProducts.name} ProductsPrice={salesProducts.price} ProductsImage={salesProducts.images[0].src}></HealthyCard>
+                  </View>
                 );
               })
             }
           </ScrollView>
-          <Text style={{ marginRight: -5, fontSize: 13, paddingTop: 10, paddingLeft: 20, fontWeight: 'bold', color: '#1F5273' }}>NEW ARRIVALS</Text>
+          {/* New Arrivals */}
+          <Text style={ styles.subHeading }>NEW ARRIVALS</Text>
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
             {
-              this.state.newArrivals.map((products) => {
+              this.state.newArrivals.map(newArrivals => {
                 return (
-                  <Card containerStyle={{ marginRight: -5, padding: 0, width: 115, borderRadius: 10, elevation: 6, marginBottom: 10 }}>
-                    <View style={styles.user}>
-                      <View style={{ padding: 5, flexDirection: 'row' }} >
-                        <Image
-                          style={styles.cardImage}
-                          resizeMode="contain"
-                          source={{ uri: products.images[0].src }}
-                        />
-                        <Icon
-                          type='font-awesome'
-                          name='heart'
-                          size={15}
-                          color='#E6E6E6'
-                          //  onPress={  }
-                          containerStyle={{ marginLeft: -15, paddingTop: 2 }} />
-                        <Icon
-                          type='ionicon'
-                          name='ios-add-circle'
-                          size={25}
-                          color='#87B6D4'
-                          containerStyle={{ marginLeft: -100 }}
-                        />
-                      </View>
-                      <View style={{ padding: 2 }}>
-                        <Text style={styles.desc}>{products.name}</Text>
-                        <Text style={styles.price}>Rs: {products.price}</Text>
-                      </View>
-                    </View>
-                  </Card>
-                  // <HealthyCard ProductsName={products.name} ProductsPrice={products.price} ProductsImage={products.images[0].src}></HealthyCard>
+                  <HealthyCard ProductsName={newArrivals.name} ProductsPrice={newArrivals.price} ProductsImage={newArrivals.images[0].src}></HealthyCard>
                 );
               })
             }
           </ScrollView>
-          <Text style={{ marginRight: -5, fontSize: 13, paddingTop: 10, paddingLeft: 20, fontWeight: 'bold', color: '#1F5273' }}>BRANDS</Text>
+          <Text style={ styles.subHeading }>BRANDS</Text>
           <View>
             {
               this.state.brands.map(brands => {

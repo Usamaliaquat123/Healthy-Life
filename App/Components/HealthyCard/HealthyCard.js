@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Image, ScrollView } from 'react-native'
-import { SearchBar,Card } from 'react-native-elements'
+import { View, Image, ScrollView,Text } from 'react-native'
+import { SearchBar,Card,Icon } from 'react-native-elements'
 import styles from './HealthyCard.styles'
 import { PropTypes } from "prop-types";
 // import styles  from './HealthyCard.styles';
@@ -8,8 +8,13 @@ import { PropTypes } from "prop-types";
  * Default : Props
  */
 
-HealthyCard.propTypes = {
-    /*
+
+
+
+
+export default class HealthyCard extends Component {
+  static propTypes = {
+      /*
      *@Params : ProductsName its a name of products
      */
     ProductsName : PropTypes.string.isRequired,
@@ -21,13 +26,7 @@ HealthyCard.propTypes = {
      *@Params : ProductsImage its a image of products
      */
     ProductsImage : PropTypes.string.isRequired,
-    
-}
-
-
-
-
-export default class HealthyCard extends Component {
+  }
     render() {
         const { ProductsName, ProductsPrice, ProductsImage } = this.props
         return (
@@ -56,7 +55,7 @@ export default class HealthyCard extends Component {
                       </View>
                       <View style={{ padding: 2 }}>
                         <Text style={styles.desc}>{ProductsName}</Text>
-                        <Text style={styles.price}>Rs: {ProductsPrice}</Text>
+                        <Text style={styles.price}>Rs:{ProductsPrice}</Text>
                       </View>
                     </View>
                   </Card>

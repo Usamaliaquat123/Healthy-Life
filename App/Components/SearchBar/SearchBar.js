@@ -12,11 +12,11 @@ import SearchBarStyles from './SearchBar.styles';
 //     /*
 //      *@Params : SearchOnClear its just a function
 //      */
-//     SearchOnClear: PropsTypes.func.isRequired,
+//     SearchOnClear: PropTypes.func.isRequired,
 //      /*
 //      *@Params : searchOnTextChange its just a function
 //      */
-//     searchOnTextChange :  PropsTypes.func.isRequired
+//     searchOnTextChange :  PropTypes.func.isRequired
     
 // }
 // SearchBarStyles.defaultProps  = {
