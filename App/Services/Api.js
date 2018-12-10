@@ -42,6 +42,10 @@ const create = (baseURL = 'https://www.healthylife.pk/wp-json') => {
   const featuredproducts = (consumer_key,consumer_secret) => api.get('/wc/v2/products/?featured=true',{consumer_key,consumer_secret})
   const newArrivals = (consumer_key, consumer_secret) =>  api.get('/wc/v2/products', {consumer_key ,consumer_secret})
   const salesProducts = (consumer_key,consumer_secret) => api.get('/wc/v2/products/?on_sale=true',{consumer_key,consumer_secret})
+  // const preWorkouts = (consumer_key,consumer_secret) => api.get(`/wc/v2/products/cate`)
+  const getAllcategories = (consumer_key,consumer_secret) => api.get('/wc/v2/products/categories', {consumer_key,consumer_secret})
+  const productSpecifiCategories = (consumer_key,consumer_secret,categoryId) => api.get(`/wc/v2/products?category=${categoryId}`,{consumer_key,consumer_secret})
+  const getCategorieDetail = (consumer_key,consumer_secret,categoryId) => api.get(`/wc/v2/products/categories/${categoryId}`,{consumer_key,consumer_secret}) 
   // ------
   // STEP 3
   // ------
@@ -62,7 +66,10 @@ const create = (baseURL = 'https://www.healthylife.pk/wp-json') => {
     searchProducts,
     featuredproducts,
     salesProducts,
-    newArrivals
+    newArrivals,
+    getAllcategories,
+    productSpecifiCategories,
+    getCategorieDetail
   }
 }
 

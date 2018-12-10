@@ -71,10 +71,13 @@ export default class MainScreen extends Component {
   /*
   * getFeatured ==> Products
   */
-  featuredProducts = () => {
+   featuredProducts = () => {
     const api = API.create();
     api.featuredproducts(authWP.consumer_key, authWP.consumer_secret).then(featuredProducts => {
       this.setState({ featuredProducts: featuredProducts.data })
+      console.log(featuredProducts)
+      console.log(`testtt`)
+
     })
   }
   /*
@@ -146,15 +149,18 @@ export default class MainScreen extends Component {
           <View>
             {
               this.state.brands.map(brands => {
+                return(
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    <Image source={{}}/>
-                    <Text>{brands.image}</Text>
+                    <Image style={{ width: 40, height: 40 }} source={{ uri : brands.image}}/>
+                    
                 </ScrollView>
+
+                )
               })
+            
              }
           </View>
         </ScrollView>
-
       </View>
 
     )
