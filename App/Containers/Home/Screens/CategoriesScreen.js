@@ -8,7 +8,9 @@ import { connect } from 'react-redux'
 import styles from '../../Styles/CategoriesScreenStyle'
 
 class CategoriesScreen extends Component {
+
   render () {
+    console.log(state)
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
@@ -21,6 +23,7 @@ class CategoriesScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    
   }
 }
 
