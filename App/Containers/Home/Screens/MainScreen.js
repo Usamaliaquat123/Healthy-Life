@@ -9,109 +9,181 @@ import { authWP } from "../../keys";
 // Styles
 import styles from '../../Styles/MainScreenStyle'
 import Carousel from 'react-native-snap-carousel';
-
-const users = [
-  {
-    desc: 'brynn',
-    description: 'standard 100% way protein ...',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-    price: 4650
-  },
-  {
-    desc: 'brynn',
-    description: 'standard 100% way protein ...',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-    price: 4650
-  }
-
-]
+import HealthyCard from '../../../Components/HealthyCard/HealthyCard';
+import {brands}  from "./Brands";
+import {  Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
 export default class MainScreen extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
-      products: []
+      networkConnected: true,
+      
+      featuredProducts: [],
+      featuredProductsLoader: true,
+      salesProducts: [],
+      salesProductsLoader: true,
+      newArrivals: [],
+      newArrivalsLoader: true,
+      brands: [{
+        name: 'cellucor',
+        image: '../../../Images/brands/cellucor.png'
+    },
+    {
+        name: 'dymatize',
+        image: '../../../Images/brands/dymatize.png'
+    },
+    {
+        name: 'gaspari',
+        image: '../../../Images/brands/gaspari.png'
+    },
+    {
+        name: 'labrada',
+        image: '../../../Images/brands/labrada.png'
+    },
+    {
+        name: 'nutrex',
+        image: '../../../Images/brands/nutrex.png'
+    },
+    {
+        name: 'optimum',
+        image: '../../../Images/brands/optimum.png'
+    },
+    {
+        name: 'twinlab',
+        image: '../../../Images/brands/twinlab.png'
+    },
+    {
+        name: 'Ultimate-',
+        image: '../../../Images/brands/Ultimate-.png'
+    },
+    {
+        name: 'Universal',
+        image: '../../../Images/brands/Universal-Nutrition-Product-in-Pakistan-Animal-Pak-300x56.png'
+    }]
     }
   }
 
   componentDidMount = () => {
-    const api = API.create();
-
-    // Getting the products
-    api.getProducts(authWP.consumer_key, authWP.consumer_secret)
-      .then(prodcts => {
-        this.setState({ products: prodcts.data })
-        console.log(`testig`)
-        console.log(this.state.products)
-      })
-      .catch(err => console.log(err))
-
+    console.log('testtsaldaskdlsk')
+    console.log(this.state.brands)
+  // this.setState({ brands :  })
+    this.featuredProducts()
+    this.salesProducts()
+    this.newArrivals()
   }
-
+  /*
+  * getFeatured ==> Products
+  */
+  async featuredProducts(){
+      try{
+        const api = API.create();
+        
+        await api.featuredproducts(authWP.consumer_key, authWP.consumer_secret).then(featuredProducts => {
+          this.setState({ featuredProducts: featuredProducts.data })
+          console.log(featuredProducts)
+          console.log(`testtt`)
+    
+        })
+        this.setState({ networkConnected : true })
+      }catch(e){ this.setState({ networkConnected : false }) }
+  }
+  /*
+   * getSales ==> Products
+   */
+  async salesProducts(){
+    try{
+      const api = API.create();
+      await api.salesProducts(authWP.consumer_key, authWP.consumer_secret).then(salesProducts => {
+        this.setState({ salesProducts: salesProducts.data })
+      })
+      this.setState({ networkConnected : true })
+    }catch(e){ this.setState({ networkConnected: false }) }
+  }
+  /*
+   * New Arrivals ==> Products
+   */
+  async newArrivals(){
+   try{
+    const api = API.create();
+     await api.newArrivals(authWP.consumer_key, authWP.consumer_secret).then(newArrivals => {
+      this.setState({ newArrivals: newArrivals.data })
+    })
+    this.setState({ networkConnected : true })
+   }catch(e){ this.setState({ networkConnected :false }) }
+  }
+  /*
+  * getSales ==> Products
+  */
 
   render() {
-    return (
-
-      <View style={styles.contentContainer}>
-        {/* <ScrollView scrollEventThrottle={16}>
-          <View style={{ flex: 1, backgroundColor: 'white'}} >
-            <View style={{ height: 180}}>
-              <ScrollView horizontal={true}
-                showsHorizontalScrollIndicator={false}>
-     
-              </ScrollView>
-            </View>
-          </View>
-        </ScrollView> */}
-        <ScrollView>
-
-
-          {/* Horizontal Slider */}
-         
-        <ScrollView horizontal={true}>
-            {
-              this.state.products.map((products) => {
+    if(this.state.networkConnected == true){
+      return (
+        
+        <View style={styles.contentContainer}>
+         <ScrollView showsVerticalScrollIndicator={false}>
+            {/* Featured Products */}
+            <Text style={styles.subHeading}>FEATURED</Text>
+            <ScrollView horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              {
+        <Pulse size={30} color="#0C4367" />       
+               this.state.featuredProducts.map(featuredProducts => {
                 return (
-             
-                  <Card containerStyle={{ padding: 0, width: 115, borderRadius: 10, elevation: 10, marginBottom: 10 }}>
-
-                    <View key={i} style={styles.user}>
-                      <View style={{ padding: 5, flexDirection: 'row' }} >
-                        <Image
-                          style={styles.cardImage}
-                          resizeMode="contain"
-                          source={{ uri: products.featured_src }}
-                        />
-                        <Icon
-                          type='font-awesome'
-                          name='heart'
-                          size={15}
-                          color='#E6E6E6'
-                          //  onPress={  }
-                          containerStyle={{ marginLeft: -15, paddingTop: 2 }} />
-                        <Icon
-                          type='ionicon'
-                          name='ios-add-circle'
-                          size={25}
-                          color='#87B6D4'
-                          containerStyle={{ marginLeft: -100 }}
-                        />
-                      </View>
-                      <View style={{ padding: 5 }}>
-                        <Text style={styles.desc}>{products.title}</Text>
-                        <Text style={styles.price}>Rs: {products.price}</Text>
-                      </View>
-                    </View>
-                  </Card>
+                  <HealthyCard ProductsName={featuredProducts.name} ProductsPrice={featuredProducts.price} ProductsImage={featuredProducts.images[0].src}></HealthyCard>
                 );
               })
-            }
-                </ScrollView>
-        
-        </ScrollView>
-
-      </View>
-
-    )
+              }
+            </ScrollView>
+            {/* Sales Products */}
+            <Text style={ styles.subHeading }>SALES</Text>
+            <ScrollView horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              {
+                this.state.salesProducts.map(salesProducts => {
+                  return (
+                    <View>
+                      <HealthyCard ProductsName={salesProducts.name} ProductsPrice={salesProducts.price} ProductsImage={salesProducts.images[0].src}></HealthyCard>
+                    </View>
+                  );
+                })
+              }
+            </ScrollView>
+            {/* New Arrivals */}
+            <Text style={ styles.subHeading }>NEW ARRIVALS</Text>
+            <ScrollView horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              {
+                this.state.newArrivals.map(newArrivals => {
+                  return (
+                    <HealthyCard ProductsName={newArrivals.name} ProductsPrice={newArrivals.price} ProductsImage={newArrivals.images[0].src}></HealthyCard>
+                  );
+                })
+              }
+            </ScrollView>
+            <Text style={ styles.subHeading }>BRANDS</Text>
+            <View>
+              {
+                this.state.brands.map(brands => {
+                  return(
+                  <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                      <Image style={{ width: 40, height: 40 }} source={{ uri : brands.image}}/>
+                      
+                  </ScrollView>
+  
+                  )
+                })
+              
+               }
+            </View>
+          </ScrollView>
+        </View>
+  
+      )
+    }else{
+      console.log('not connected to internet')
+    }
+   
 
   }
 }

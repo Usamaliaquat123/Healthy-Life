@@ -24,6 +24,30 @@ export default StyleSheet.create({
   price : {
     color : '#547B93',
     fontSize: 9
+  },
+  subHeading : {
+    marginRight: -5, 
+    fontSize: 13, 
+    paddingTop: 10, 
+    paddingLeft: 20, 
+    fontWeight: 'bold', 
+    color: '#1F5273'
+  },
+  spinner: {
+    marginBottom: 50
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d35400',
+  },
+
+  btn: {
+    marginTop: 20
+  },
+
+  text: {
+    color: "white"
   }
-  
 })
