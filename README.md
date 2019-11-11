@@ -24,7 +24,7 @@
 
 ## :no_entry_sign: Standard Compliant
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) [![Greenkeeper badge](https://badges.greenkeeper.io/Usamaliaquat123/Healthy-Life.svg)](https://greenkeeper.io/)
 This project adheres to Standard.  Our CI enforces this, so we suggest you enable linting to keep your project compliant during development.
 
 **To Lint on Commit**
